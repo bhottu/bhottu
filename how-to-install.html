@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Install Mingle v1.0.0</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4 {
+            color: #333;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<div class="sidebar">
+    <a href="how-to-install.html">How to Install</a>
+    <a href="#contact-us">Contact Us</a>
+</div>
+<body>
+    <h1>Mingle v1.0.0</h1>
+
+    <h3>How to Install the Mingle Project</h3>
+
+    <h4>Requirements</h4>
+    <p>Ensure that your server meets the following requirements:</p>
+    <ul>
+        <li><strong>PHP:</strong> Version 8.2 or higher</li>
+        <li><strong>Database:</strong> MySQL, PostgreSQL, SQLite, or SQL Server</li>
+        <li><strong>Web Server:</strong> Apache or Nginx</li>
+        <li><strong>Composer:</strong> Dependency manager for PHP</li>
+        <li><strong>Node.js & NPM:</strong> For managing front-end assets</li>
+    </ul>
+
+    <h3>Installation Steps for Your Project</h3>
+    <ol>
+        <li>
+            <strong>Download and Extract the Project:</strong>
+            <p>Download the zip file of the project from Codecanyon and extract it to your chosen directory.</p>
+        </li>
+        <li>
+            <strong>Navigate to the Project Directory:</strong>
+            <p>Change to the project directory:</p>
+            <pre><code>cd name-of-project-directory</code></pre>
+        </li>
+        <li>
+            <strong>Install PHP Dependencies:</strong>
+            <p>Install the PHP dependencies defined in <code>composer.json</code>:</p>
+            <pre><code>composer install</code></pre>
+        </li>
+        <li>
+            <strong>Install Node.js Dependencies:</strong>
+            <p>Install the Node.js dependencies defined in <code>package.json</code>:</p>
+            <pre><code>npm install</code></pre>
+        </li>
+        <li>
+            <strong>Run Database Migrations:</strong>
+            <p>Apply the database migrations to set up the database schema:</p>
+            <pre><code>php artisan migrate</code></pre>
+        </li>
+        <li>
+            <strong>Seed the Database:</strong>
+            <p>Populate the database with initial data using database seeding:</p>
+            <pre><code>php artisan db:seed</code></pre>
+        </li>
+        <li>
+            <strong>Generate Application Key:</strong>
+            <p>Generate a new application key for your Laravel application:</p>
+            <pre><code>php artisan key:generate</code></pre>
+        </li>
+        <li>
+            <strong>Create Storage Symbolic Link:</strong>
+            <p>Create a symbolic link for the storage directory to make storage files accessible:</p>
+            <pre><code>php artisan storage:link</code></pre>
+        </li>
+        <li>
+            <strong>Modify the Service Provider:</strong>
+            <p>Go to <code>app/Providers/AppServiceProvider.php</code> and remove the comments by deleting <code>//</code>:</p>
+            <pre><code>
+# Open `app/Providers/AppServiceProvider.php` in your code editor.
+# Locate the lines of code with `//` and remove these comments.
+            </code></pre>
+        </li>
+        <li>
+            <strong>Compile Assets:</strong>
+            <p>Compile your assets for development or production:</p>
+            <ul>
+                <li>For development:</li>
+                <pre><code>npm run dev</code></pre>
+                <li>For production:</li>
+                <pre><code>npm run prod</code></pre>
+            </ul>
+        </li>
+        <li>
+            <strong>Serve the Application:</strong>
+            <p>Start the Laravel development server to serve your application:</p>
+            <pre><code>php artisan serve</code></pre>
+        </li>
+        <li>
+            <strong>Reload Your Website:</strong>
+            <p>Open your web browser and reload your website at <code>http://localhost:8000</code> (or the URL provided by the <code>php artisan serve</code> command) to see your application in action.</p>
+        </li>
+    </ol>
+
+    <p>These steps should help you set up and run your Laravel project smoothly. Let me know if you need any more help!<br>
+    Support: <a href="mailto:mingleteam777@gmail.com">mingleteam777@gmail.com</a></p>
+
+    <hr>
+
+    <h3>Other Settings for Website</h3>
+
+    <h4>Google Login Setup</h4>
+    <ul>
+        <li>Open Google Cloud Console.</li>
+        <li>In the left menu, navigate to <strong>APIs & Services > Credentials</strong>.</li>
+        <li>Select an existing <strong>OAuth 2.0 Client ID</strong> or create a new one.</li>
+        <li>In the <strong>Authorized redirect URIs</strong> section, add:
+        <pre><code>http://your-website.com/auth/google/callback</code></pre></li>
+        <li>Copy the <strong>Client ID</strong> and <strong>Client Secret</strong>.</li>
+        <li>Go to the admin page, select the <strong>Google Settings</strong> menu, and paste the <strong>Client ID</strong> and <strong>Client Secret</strong> you just copied.</li>
+    </ul>
+
+    <h4>Email Configuration</h4>
+    <p>Open the <code>.env</code> file.</p>
+    <p>Locate the section:</p>
+    <pre><code>
+MAIL_MAILER=log
+MAIL_HOST=127.0.0.1
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+    </code></pre>
+    <p>Update it with your email configuration:</p>
+    <pre><code>
+MAIL_MAILER=smtp
+MAIL_HOST=your-mail-host
+MAIL_PORT=your-mail-port
+MAIL_USERNAME=your-mail-username
+MAIL_PASSWORD=your-mail-password
+MAIL_ENCRYPTION=tls  # or 'ssl' if required
+MAIL_FROM_ADDRESS="your-email@example.com"
+MAIL_FROM_NAME="Your Name or Company"
+    </code></pre>
+    <p>Replace <code>your-mail-host</code>, <code>your-mail-port</code>, <code>your-mail-username</code>, <code>your-mail-password</code>, and other placeholders with your actual email configuration details.</p>
+</body>
+</html>
