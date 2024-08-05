@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Mingle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 15px;
+            height: 100vh;
+            position: fixed;
+        }
+        .content {
+            margin-left: 200px;
+            padding: 20px;
+            width: 100%;
+        }
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            margin: 10px 0;
+            color: #000;
+            text-decoration: none;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+        }
+        .sidebar a:hover {
+            background-color: #d0d0d0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label, input, textarea {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 1rem;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="index.html">Home</a>
+        <a href="how-to-install.html">How to Install</a>
+        <a href="contact-us.html">Contact Us</a>
+    </div>
+    <div class="content">
+        <h1>Contact Us</h1>
+        <form action="mailto:mingleteam777@gmail.com" method="post" enctype="text/plain">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <input type="submit" value="Send Email">
+        </form>
+    </div>
+</body>
+</html>
