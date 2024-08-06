@@ -55,19 +55,23 @@ body {
     margin-bottom: 10px;
     text-decoration: none;
     color: #fff;
-    background-color: #337ab7; /* Hijau untuk tombol buy on projects.co.id */
+    background-color: #202938; /* Hijau untuk tombol buy on projects.co.id */
     border-radius: 4px;
     text-align: center;
 
 }
 .buy-buttons a:last-child {
-    background-color: #337ab7; /* Biru untuk tombol buy on codecanyon */
+    background-color: #202938; /* Biru untuk tombol buy on codecanyon */
 }
 .buy-buttons a:hover {
-    background-color: #337ab7; /* Warna hover untuk hijau */
+    background-color: #202938; /* Warna hover untuk hijau */
 }
 .buy-buttons a:last-child:hover {
-    background-color: #286090; /* Warna hover untuk biru */
+    background-color: #202938; /* Warna hover untuk biru */
+}
+
+.buy-buttons a:hover {
+    background-color: #2e4163;
 }
 
 /* Media query untuk layar dengan lebar kurang dari atau sama dengan 768px (tampilan mobile) */
