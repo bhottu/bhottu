@@ -10,9 +10,12 @@
             margin: 0;
             display: flex;
         }
+        .textcolor {
+            color: #ffffff; /* Warna teks putih */
+        }
         .sidebar {
             width: 150px;
-            background-color: #f4f4f4;
+            background-color: #202938;
             padding: 15px;
             height: 100vh;
             position: fixed;
@@ -21,6 +24,7 @@
             margin-left: 200px;
             padding: 20px;
             width: 100%;
+            color: #23375a;
         }
         .content img {
             max-width: 100%;
@@ -40,6 +44,35 @@
         .sidebar a:hover {
             background-color: #d0d0d0;
         }
+        .alert {
+            background-color: #058f00; /* Warna latar belakang merah */
+            color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .buy-buttons {
+            margin-top: 20px;
+        }
+        .buy-buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #4CAF50; /* Hijau untuk tombol buy on projects.co.id */
+            border-radius: 4px;
+            text-align: center;
+        }
+        .buy-buttons a:last-child {
+            background-color: #337ab7; /* Biru untuk tombol buy on codecanyon */
+        }
+        .buy-buttons a:hover {
+            background-color: #45a049; /* Warna hover untuk hijau */
+        }
+        .buy-buttons a:last-child:hover {
+            background-color: #286090; /* Warna hover untuk biru */
+        }
     </style>
 </head>
 <body>
@@ -49,6 +82,18 @@
         <a href="contact-us.html">Contact Us</a>
     </div>
     <div class="content">
+
+        <div class="alert">
+            <strong>Upcoming Update:</strong>
+            <ul>
+                <li>Android & IOS version</li>
+                <li>Real-time chat</li>
+                <li>Dan fitur lainnya</li>
+            </ul>
+            If you purchase now, there will be no additional charge for the upcoming mobile application and others feature.
+        </div>
+        
+
         <h1>Welcome to Mingle</h1>
         <p>Welcome to Mingle, a versatile classified web platform designed for all your buying and selling needs. Our application is built to handle a wide range of classified ads and integrates seamlessly with e-commerce functionalities to provide an all-in-one solution.</p>
         
@@ -96,6 +141,11 @@
         <p>All licenses and usage terms comply with industry standards and ensure that you, as a buyer, have the right to use all included components within your commercial projects.</p>
         <p>We are happy to provide further information if needed. Please contact us with any questions regarding the licensing and ownership of content used in Mingle.</p>
         
+        <div class="buy-buttons">
+            <a href="https://projects.co.id" target="_blank">Buy on Projects.co.id</a>
+            <a href="https://codecanyon.net" target="_blank">Buy on Codecanyon</a>
+        </div>
+
         <h2>Home banner</h2>
         <img src="https://github.com/user-attachments/assets/ffea27ef-f123-42c4-94b5-f06ab5383f16" alt="home banner">
         <h2>Home - full view</h2>
