@@ -12,7 +12,7 @@
         }
         .sidebar {
             width: 150px;
-            background-color: #f4f4f4;
+            background-color: #202938;
             padding: 15px;
             height: 100vh;
             position: fixed;
@@ -21,6 +21,7 @@
             margin-left: 200px;
             padding: 20px;
             width: 100%;
+            color: #23375a;
         }
         .sidebar a {
             display: block;
@@ -52,6 +53,13 @@
         input[type="submit"]:hover {
             background-color: #0056b3;
         }
+        .alert {
+            background-color: #058f00; /* Warna latar belakang merah */
+            color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -61,6 +69,17 @@
         <a href="contact-us.html">Contact Us</a>
     </div>
     <div class="content">
+
+        <div class="alert">
+            <strong>Upcoming Update:</strong>
+            <ul>
+                <li>Android & IOS version</li>
+                <li>Real-time chat</li>
+                <li>Dan fitur lainnya</li>
+            </ul>
+            If you purchase now, there will be no additional charge for the upcoming mobile application and others feature.
+        </div>
+
         <h1>Contact Us</h1> 
         <form action="mailto:mingleteam777@gmail.com" method="post" enctype="text/plain">
             <label for="to">Mail to (reply within 1-2 days):</label>  
