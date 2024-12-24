@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plant Coaction Feedback 2</title>
+  <title>Plant Coaction Feedback 3</title>
   <style>
     body {
       display: flex;
@@ -64,7 +64,7 @@
 
     // Event saat kursor mendekati tombol "Tidak"
     noButton.addEventListener("mouseenter", () => {
-      const maxRadius = 300; // Radius maksimal pergerakan tombol dalam piksel (diperbarui ke 300px)
+      const maxRadius = 300; // Radius maksimal pergerakan tombol dalam piksel
       const buttonWidth = noButton.offsetWidth;
       const buttonHeight = noButton.offsetHeight;
 
@@ -77,9 +77,17 @@
       const angle = Math.random() * 2 * Math.PI; // Sudut acak
       const distance = Math.random() * maxRadius; // Jarak acak dalam radius 300px
 
-      // Menghitung posisi baru tombol "Tidak"
-      const randomX = yesButtonCenterX + distance * Math.cos(angle) - buttonWidth / 2;
-      const randomY = yesButtonCenterY + distance * Math.sin(angle) - buttonHeight / 2;
+      // Menghitung posisi baru tombol "Tidak" dengan memastikan tetap dalam layar
+      let randomX = yesButtonCenterX + distance * Math.cos(angle) - buttonWidth / 2;
+      let randomY = yesButtonCenterY + distance * Math.sin(angle) - buttonHeight / 2;
+
+      // Memastikan posisi tombol tetap dalam layar
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+
+      // Mengatur batas kiri dan atas
+      randomX = Math.max(0, Math.min(screenWidth - buttonWidth, randomX));
+      randomY = Math.max(0, Math.min(screenHeight - buttonHeight, randomY));
 
       // Terapkan posisi acak dengan memastikan tombol tetap berada dalam batas yang diinginkan
       noButton.style.position = "absolute"; // Berubah menjadi absolute saat berpindah
