@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plant Coaction Feedback 2</title>
+  <title>Plant Coaction Feedback 3</title>
   <style>
     body {
       display: flex;
@@ -74,31 +74,49 @@
   <script>
     const noButton = document.getElementById("no");
     const yesButton = document.getElementById("yes");
-
-    const container = document.querySelector(".buttons");
-    const containerWidth = container.clientWidth;
-    const containerHeight = container.clientHeight;
+    const output = document.getElementById("output");
 
     // Event saat kursor mendekati tombol "Tidak"
-    noButton.addEventListener("mouseover", () => {
+    noButton.addEventListener("mouseenter", () => {
+      const maxRadius = 300; // Radius maksimal pergerakan tombol dalam piksel
       const buttonWidth = noButton.offsetWidth;
       const buttonHeight = noButton.offsetHeight;
 
-      const randomX = Math.random() * (containerWidth - buttonWidth);
-      const randomY = Math.random() * (containerHeight - buttonHeight);
+      // Mendapatkan posisi tombol "Iya"
+      const yesButtonRect = yesButton.getBoundingClientRect();
+      const yesButtonCenterX = yesButtonRect.left + yesButtonRect.width / 2;
+      const yesButtonCenterY = yesButtonRect.top + yesButtonRect.height / 2;
 
+      // Membuat posisi acak dalam radius 300px di sekitar tombol "Iya"
+      const angle = Math.random() * 2 * Math.PI; // Sudut acak
+      const distance = Math.random() * maxRadius; // Jarak acak dalam radius 300px
+
+      // Menghitung posisi baru tombol "Tidak" dengan memastikan tetap dalam layar
+      let randomX = yesButtonCenterX + distance * Math.cos(angle) - buttonWidth / 2;
+      let randomY = yesButtonCenterY + distance * Math.sin(angle) - buttonHeight / 2;
+
+      // Memastikan posisi tombol tetap dalam layar
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+
+      // Mengatur batas kiri dan atas
+      randomX = Math.max(0, Math.min(screenWidth - buttonWidth, randomX));
+      randomY = Math.max(0, Math.min(screenHeight - buttonHeight, randomY));
+
+      // Terapkan posisi acak dengan memastikan tombol tetap berada dalam batas yang diinginkan
+      noButton.style.position = "absolute"; // Berubah menjadi absolute saat berpindah
       noButton.style.left = `${randomX}px`;
       noButton.style.top = `${randomY}px`;
     });
 
-    // Event saat tombol "Ya" diklik
+    // Event saat tombol "Iya" diklik
     yesButton.addEventListener("click", () => {
-      alert("Terima kasih atas feedback Anda!");
+      output.textContent = "Terima kasih atas feedback Anda!";
     });
 
-    // Event saat tombol "Tidak" diklik (jika bisa diklik)
+    // Event jika tombol "Tidak" berhasil diklik (kemungkinan kecil)
     noButton.addEventListener("click", () => {
-      alert("Kenapa Anda tidak senang? Berikan kami masukan!");
+      output.textContent = "Kami akan terus memperbaiki layanan kami. Terima kasih atas feedback Anda!";
     });
   </script>
 </body>
