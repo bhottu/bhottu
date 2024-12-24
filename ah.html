@@ -16,40 +16,40 @@
       overflow: hidden; /* Mencegah scroll */
     }
     h1 {
-      margin-bottom: 20px;
+      margin-bottom: 10px; /* Mengatur jarak antara pertanyaan dan tombol */
       text-align: center;
     }
+    #output {
+      margin-top: 10px; /* Jarak kecil antara output dan tombol */
+      font-size: 18px;
+      color: green;
+      font-weight: bold;
+    }
     .buttons {
-      position: relative;
-      width: 100%;
-      height: 100%;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      gap: 20px; /* Jarak antar tombol */
+      position: relative;
     }
     button {
       padding: 10px 20px;
-      margin: 10px;
       font-size: 16px;
       cursor: pointer;
-      position: absolute;
+      border: none;
+      border-radius: 5px;
     }
     #yes {
       background-color: green;
       color: white;
-      border: none;
-      border-radius: 5px;
     }
     #no {
       background-color: red;
       color: white;
-      border: none;
-      border-radius: 5px;
     }
   </style>
 </head>
 <body>
   <h1>Apakah Anda senang berbelanja di Plant Coaction?</h1>
+  <div id="output"></div>
   <div class="buttons">
     <button id="yes">Ya</button>
     <button id="no">Tidak</button>
@@ -58,6 +58,7 @@
   <script>
     const noButton = document.getElementById("no");
     const yesButton = document.getElementById("yes");
+    const output = document.getElementById("output");
 
     const container = document.querySelector(".buttons");
     const containerWidth = container.clientWidth;
@@ -68,16 +69,18 @@
       const buttonWidth = noButton.offsetWidth;
       const buttonHeight = noButton.offsetHeight;
 
+      // Hitung posisi acak dalam batas kontainer
       const randomX = Math.random() * (containerWidth - buttonWidth);
       const randomY = Math.random() * (containerHeight - buttonHeight);
 
+      noButton.style.position = "absolute";
       noButton.style.left = `${randomX}px`;
       noButton.style.top = `${randomY}px`;
     });
 
     // Event saat tombol "Ya" diklik
     yesButton.addEventListener("click", () => {
-      alert("Terima kasih atas feedback Anda!");
+      output.textContent = "Terima kasih atas feedback Anda!";
     });
 
     // Event saat tombol "Tidak" diklik (jika bisa diklik)
