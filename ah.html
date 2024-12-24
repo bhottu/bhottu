@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant Coaction Feedback</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .buttons {
+      position: relative;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      position: absolute;
+    }
+    #yes {
+      left: 50px;
+    }
+    #no {
+      left: 150px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Apakah Anda senang berbelanja di Plant Coaction?</h1>
+  <div class="buttons">
+    <button id="yes">Ya</button>
+    <button id="no">Tidak</button>
+  </div>
+
+  <script>
+    const noButton = document.getElementById("no");
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    // Event saat kursor mendekati tombol "Tidak"
+    noButton.addEventListener("mouseover", () => {
+      const randomX = Math.random() * (screenWidth - noButton.offsetWidth);
+      const randomY = Math.random() * (screenHeight - noButton.offsetHeight);
+
+      noButton.style.left = `${randomX}px`;
+      noButton.style.top = `${randomY}px`;
+    });
+
+    // Event saat tombol "Ya" diklik
+    document.getElementById("yes").addEventListener("click", () => {
+      alert("Terima kasih atas feedback Anda!");
+    });
+
+    // Event saat tombol "Tidak" diklik (jika bisa diklik)
+    noButton.addEventListener("click", () => {
+      alert("Kenapa Anda tidak senang? Berikan kami masukan!");
+    });
+  </script>
+</body>
+</html>
