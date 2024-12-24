@@ -14,25 +14,21 @@
       margin: 0;
       font-family: Arial, sans-serif;
       overflow: hidden; /* Mencegah scroll */
+      position: relative; /* Untuk posisi elemen di layar penuh */
     }
     h1 {
-      margin-bottom: 20px; /* Jarak antara pertanyaan dan tombol */
+      margin-bottom: 20px;
       text-align: center;
     }
     #output {
-      margin-top: 20px; /* Jarak antara tombol dan output */
+      margin-top: 20px;
       font-size: 18px;
       color: green;
       font-weight: bold;
     }
     .buttons {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px; /* Jarak antar tombol */
-      position: relative; /* Relatif terhadap kontainer */
-      width: 100%;
-      max-width: 600px;
+      gap: 20px;
     }
     button {
       padding: 10px 20px;
@@ -48,7 +44,7 @@
     #no {
       background-color: red;
       color: white;
-      position: absolute; /* Agar tombol "Tidak" bisa berpindah */
+      position: absolute;
     }
   </style>
 </head>
@@ -64,19 +60,17 @@
     const noButton = document.getElementById("no");
     const yesButton = document.getElementById("yes");
     const output = document.getElementById("output");
-    const container = document.querySelector(".buttons");
-
-    const containerWidth = container.offsetWidth;
-    const containerHeight = container.offsetHeight;
 
     // Event saat kursor mendekati tombol "Tidak"
     noButton.addEventListener("mouseenter", () => {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
       const buttonWidth = noButton.offsetWidth;
       const buttonHeight = noButton.offsetHeight;
 
-      // Hitung posisi acak baru dalam batas kontainer
-      const randomX = Math.random() * (containerWidth - buttonWidth);
-      const randomY = Math.random() * (containerHeight - buttonHeight);
+      // Hitung posisi acak baru dalam batas layar
+      const randomX = Math.random() * (screenWidth - buttonWidth);
+      const randomY = Math.random() * (screenHeight - buttonHeight);
 
       // Terapkan posisi acak
       noButton.style.left = `${randomX}px`;
