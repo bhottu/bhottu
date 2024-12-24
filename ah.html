@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plant Coaction Feedback 3</title>
+  <title>Plant Coaction Feedback</title>
   <style>
     body {
       display: flex;
@@ -14,95 +14,75 @@
       margin: 0;
       font-family: Arial, sans-serif;
       overflow: hidden; /* Mencegah scroll */
-      position: relative; /* Agar posisi elemen tetap dalam layar penuh */
     }
     h1 {
       margin-bottom: 20px;
       text-align: center;
     }
-    #output {
-      margin-top: 20px;
-      font-size: 18px;
-      color: green;
-      font-weight: bold;
-    }
     .buttons {
+      position: relative;
+      width: 100%;
+      height: 100%;
       display: flex;
-      gap: 20px; /* Jarak antara tombol */
-      position: relative; /* Untuk menjaga tombol dalam konteks flex */
+      justify-content: center;
+      align-items: center;
     }
     button {
       padding: 10px 20px;
+      margin: 10px;
       font-size: 16px;
       cursor: pointer;
-      border: none;
-      border-radius: 5px;
+      position: absolute;
     }
     #yes {
       background-color: green;
       color: white;
+      border: none;
+      border-radius: 5px;
     }
     #no {
       background-color: red;
       color: white;
-      position: absolute; /* Agar bisa berpindah posisi */
+      border: none;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
   <h1>Apakah Anda senang berbelanja di Plant Coaction?</h1>
-  <div id="output"></div>
   <div class="buttons">
-    <button id="yes">Iya</button>
-    <button id="no" style="position: static;">Tidak</button>
+    <button id="yes">Ya</button>
+    <button id="no">Tidak</button>
   </div>
 
   <script>
     const noButton = document.getElementById("no");
     const yesButton = document.getElementById("yes");
-    const output = document.getElementById("output");
+
+    const container = document.querySelector(".buttons");
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
 
     // Event saat kursor mendekati tombol "Tidak"
-    noButton.addEventListener("mouseenter", () => {
-      const maxRadius = 300; // Radius maksimal pergerakan tombol dalam piksel
+    noButton.addEventListener("mouseover", () => {
       const buttonWidth = noButton.offsetWidth;
       const buttonHeight = noButton.offsetHeight;
 
-      // Mendapatkan posisi tombol "Iya"
-      const yesButtonRect = yesButton.getBoundingClientRect();
-      const yesButtonCenterX = yesButtonRect.left + yesButtonRect.width / 2;
-      const yesButtonCenterY = yesButtonRect.top + yesButtonRect.height / 2;
+      const randomX = Math.random() * (containerWidth - buttonWidth);
+      const randomY = Math.random() * (containerHeight - buttonHeight);
 
-      // Membuat posisi acak dalam radius 300px di sekitar tombol "Iya"
-      const angle = Math.random() * 2 * Math.PI; // Sudut acak
-      const distance = Math.random() * maxRadius; // Jarak acak dalam radius 300px
-
-      // Menghitung posisi baru tombol "Tidak" dengan memastikan tetap dalam layar
-      let randomX = yesButtonCenterX + distance * Math.cos(angle) - buttonWidth / 2;
-      let randomY = yesButtonCenterY + distance * Math.sin(angle) - buttonHeight / 2;
-
-      // Memastikan posisi tombol tetap dalam layar
-      const screenWidth = window.innerWidth;
-      const screenHeight = window.innerHeight;
-
-      // Mengatur batas kiri dan atas
-      randomX = Math.max(0, Math.min(screenWidth - buttonWidth, randomX));
-      randomY = Math.max(0, Math.min(screenHeight - buttonHeight, randomY));
-
-      // Terapkan posisi acak dengan memastikan tombol tetap berada dalam batas yang diinginkan
-      noButton.style.position = "absolute"; // Berubah menjadi absolute saat berpindah
       noButton.style.left = `${randomX}px`;
       noButton.style.top = `${randomY}px`;
     });
 
-    // Event saat tombol "Iya" diklik
+    // Event saat tombol "Ya" diklik
     yesButton.addEventListener("click", () => {
-      output.textContent = "Terima kasih atas feedback Anda!";
+      alert("Terima kasih atas feedback Anda!");
     });
 
-    // Event jika tombol "Tidak" berhasil diklik (kemungkinan kecil)
+    // Event saat tombol "Tidak" diklik (jika bisa diklik)
     noButton.addEventListener("click", () => {
-      output.textContent = "Kami akan terus memperbaiki layanan kami. Terima kasih atas feedback Anda!";
+      alert("Kenapa Anda tidak senang? Berikan kami masukan!");
     });
   </script>
 </body>
