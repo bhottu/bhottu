@@ -14,7 +14,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
       overflow: hidden; /* Mencegah scroll */
-      position: relative; /* Untuk posisi elemen di layar penuh */
+      position: relative; /* Agar posisi elemen tetap dalam layar penuh */
     }
     h1 {
       margin-bottom: 20px;
@@ -28,7 +28,8 @@
     }
     .buttons {
       display: flex;
-      gap: 20px;
+      gap: 20px; /* Jarak antara tombol */
+      position: relative; /* Untuk menjaga tombol dalam konteks flex */
     }
     button {
       padding: 10px 20px;
@@ -44,7 +45,7 @@
     #no {
       background-color: red;
       color: white;
-      position: absolute;
+      position: absolute; /* Agar bisa berpindah posisi */
     }
   </style>
 </head>
@@ -53,7 +54,7 @@
   <div id="output"></div>
   <div class="buttons">
     <button id="yes">Iya</button>
-    <button id="no">Tidak</button>
+    <button id="no" style="position: static;">Tidak</button>
   </div>
 
   <script>
@@ -73,6 +74,7 @@
       const randomY = Math.random() * (screenHeight - buttonHeight);
 
       // Terapkan posisi acak
+      noButton.style.position = "absolute"; // Berubah menjadi absolute saat berpindah
       noButton.style.left = `${randomX}px`;
       noButton.style.top = `${randomY}px`;
     });
