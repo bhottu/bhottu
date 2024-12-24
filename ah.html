@@ -37,22 +37,38 @@
     #yes {
       background-color: green;
       color: white;
-      border: none;
-      border-radius: 5px;
     }
     #no {
       background-color: red;
       color: white;
-      border: none;
-      border-radius: 5px;
+      position: absolute; /* Agar bisa berpindah posisi */
+    }
+     #output {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+      font-weight: bold;
+    }
+    .buttons {
+      display: flex;
+      gap: 20px; /* Jarak antara tombol */
+      position: relative; /* Untuk menjaga tombol dalam konteks flex */
     }
   </style>
 </head>
 <body>
-  <h1>Apakah Anda senang berbelanja di Plant Coaction?</h1>
+  
+<!--  <h1>Apakah Anda senang berbelanja di Plant Coaction?</h1>
   <div class="buttons">
     <button id="yes">Ya</button>
     <button id="no">Tidak</button>
+  </div> -->
+
+  <h1>Apakah Anda senang berbelanja di Plant Coaction?</h1>
+  <div id="output"></div>
+  <div class="buttons">
+    <button id="yes">Iya</button>
+    <button id="no" style="position: static;">Tidak</button>
   </div>
 
   <script>
