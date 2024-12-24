@@ -70,8 +70,11 @@
       const buttonHeight = noButton.offsetHeight;
 
       // Hitung posisi acak baru dalam batas layar
-      const randomX = Math.random() * (screenWidth - buttonWidth);
-      const randomY = Math.random() * (screenHeight - buttonHeight);
+      const maxX = screenWidth - buttonWidth - 20; // 20 untuk margin
+      const maxY = screenHeight - buttonHeight - 20;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
 
       // Terapkan posisi acak
       noButton.style.position = "absolute"; // Berubah menjadi absolute saat berpindah
