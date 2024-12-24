@@ -16,21 +16,21 @@
       overflow: hidden; /* Mencegah scroll */
     }
     h1 {
-      margin-bottom: 10px; /* Jarak antara pertanyaan dan tombol */
+      margin-bottom: 20px; /* Jarak antara pertanyaan dan tombol */
       text-align: center;
     }
     #output {
-      margin-top: 10px; /* Jarak kecil antara output dan tombol */
+      margin-top: 20px; /* Jarak antara tombol dan output */
       font-size: 18px;
       color: green;
       font-weight: bold;
     }
     .buttons {
-      position: relative;
       display: flex;
-      gap: 20px; /* Jarak antar tombol */
       justify-content: center;
       align-items: center;
+      gap: 40px; /* Jarak antar tombol */
+      position: relative; /* Relatif terhadap kontainer */
       width: 100%;
       max-width: 600px;
     }
@@ -40,16 +40,15 @@
       cursor: pointer;
       border: none;
       border-radius: 5px;
-      position: absolute; /* Untuk memungkinkan perpindahan tombol "Tidak" */
     }
     #yes {
       background-color: green;
       color: white;
-      position: static; /* Tombol "Ya" tidak berpindah */
     }
     #no {
       background-color: red;
       color: white;
+      position: absolute; /* Agar tombol "Tidak" bisa berpindah */
     }
   </style>
 </head>
@@ -57,7 +56,7 @@
   <h1>Apakah Anda senang berbelanja di Plant Coaction?</h1>
   <div id="output"></div>
   <div class="buttons">
-    <button id="yes">Ya</button>
+    <button id="yes">Iya</button>
     <button id="no">Tidak</button>
   </div>
 
@@ -84,7 +83,7 @@
       noButton.style.top = `${randomY}px`;
     });
 
-    // Event saat tombol "Ya" diklik
+    // Event saat tombol "Iya" diklik
     yesButton.addEventListener("click", () => {
       output.textContent = "Terima kasih atas feedback Anda!";
     });
