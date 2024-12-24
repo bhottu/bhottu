@@ -78,8 +78,8 @@
 
       // Terapkan posisi acak dengan memastikan tombol tetap berada dalam batas layar
       noButton.style.position = "absolute"; // Berubah menjadi absolute saat berpindah
-      noButton.style.left = `${randomX}px`;
-      noButton.style.top = `${randomY}px`;
+      noButton.style.left = `${Math.min(randomX, maxX)}px`; // Pastikan tidak melampaui layar
+      noButton.style.top = `${Math.min(randomY, maxY)}px`; // Pastikan tidak melampaui layar
     });
 
     // Event saat tombol "Iya" diklik
