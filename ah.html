@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plant Coaction Feedback 2</title>
+  <title>Plant Coaction Feedback 4</title>
   <style>
     body {
       display: flex;
@@ -64,19 +64,27 @@
 
     // Event saat kursor mendekati tombol "Tidak"
     noButton.addEventListener("mouseenter", () => {
-      const maxWidth = 720; // Lebar maksimal pergerakan tombol dalam piksel
-      const screenHeight = window.innerHeight;
+      const maxRadius = 720; // Radius maksimal pergerakan tombol dalam piksel
       const buttonWidth = noButton.offsetWidth;
       const buttonHeight = noButton.offsetHeight;
 
-      // Hitung posisi acak baru dalam batas lebar 720px dan tinggi layar
-      const randomX = Math.random() * (maxWidth - buttonWidth); // Posisi acak horizontal dalam batas 720px
-      const randomY = Math.random() * (screenHeight - buttonHeight); // Posisi acak vertikal dalam batas layar
+      // Mendapatkan posisi tombol "Iya"
+      const yesButtonRect = yesButton.getBoundingClientRect();
+      const yesButtonCenterX = yesButtonRect.left + yesButtonRect.width / 2;
+      const yesButtonCenterY = yesButtonRect.top + yesButtonRect.height / 2;
+
+      // Membuat posisi acak dalam radius 720px di sekitar tombol "Iya"
+      const angle = Math.random() * 2 * Math.PI; // Sudut acak
+      const distance = Math.random() * maxRadius; // Jarak acak dalam radius 720px
+
+      // Menghitung posisi baru tombol "Tidak"
+      const randomX = yesButtonCenterX + distance * Math.cos(angle) - buttonWidth / 2;
+      const randomY = yesButtonCenterY + distance * Math.sin(angle) - buttonHeight / 2;
 
       // Terapkan posisi acak dengan memastikan tombol tetap berada dalam batas yang diinginkan
       noButton.style.position = "absolute"; // Berubah menjadi absolute saat berpindah
-      noButton.style.left = `${randomX}px`; // Posisi acak horizontal dalam 720px
-      noButton.style.top = `${randomY}px`; // Posisi acak vertikal dalam batas layar
+      noButton.style.left = `${randomX}px`;
+      noButton.style.top = `${randomY}px`;
     });
 
     // Event saat tombol "Iya" diklik
