@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plant Coaction Feedback 3</title>
+  <title>Plant Coaction Feedback 4</title>
   <style>
     body {
       display: flex;
@@ -60,36 +60,31 @@
   <script>
     const noButton = document.getElementById("no");
     const yesButton = document.getElementById("yes");
-    const output = document.getElementById("output");
+
+    const container = document.querySelector(".buttons");
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
 
     // Event saat kursor mendekati tombol "Tidak"
-    noButton.addEventListener("mouseenter", () => {
-      const screenWidth = window.innerWidth;
-      const screenHeight = window.innerHeight;
+    noButton.addEventListener("mouseover", () => {
       const buttonWidth = noButton.offsetWidth;
       const buttonHeight = noButton.offsetHeight;
 
-      // Hitung posisi acak baru dalam batas layar
-      const maxX = screenWidth - buttonWidth - 20; // 20 untuk margin
-      const maxY = screenHeight - buttonHeight - 20;
+      const randomX = Math.random() * (containerWidth - buttonWidth);
+      const randomY = Math.random() * (containerHeight - buttonHeight);
 
-      const randomX = Math.random() * maxX;
-      const randomY = Math.random() * maxY;
-
-      // Terapkan posisi acak
-      noButton.style.position = "absolute"; // Berubah menjadi absolute saat berpindah
       noButton.style.left = `${randomX}px`;
       noButton.style.top = `${randomY}px`;
     });
 
-    // Event saat tombol "Iya" diklik
+    // Event saat tombol "Ya" diklik
     yesButton.addEventListener("click", () => {
-      output.textContent = "Terima kasih atas feedback Anda!";
+      alert("Terima kasih atas feedback Anda!");
     });
 
-    // Event jika tombol "Tidak" berhasil diklik (kemungkinan kecil)
+    // Event saat tombol "Tidak" diklik (jika bisa diklik)
     noButton.addEventListener("click", () => {
-      output.textContent = "Kami akan terus memperbaiki layanan kami. Terima kasih atas feedback Anda!";
+      alert("Kenapa Anda tidak senang? Berikan kami masukan!");
     });
   </script>
 </body>
