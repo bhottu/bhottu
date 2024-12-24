@@ -13,9 +13,10 @@
       height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
+      overflow: hidden; /* Mencegah scroll */
     }
     h1 {
-      margin-bottom: 10px; /* Mengatur jarak antara pertanyaan dan tombol */
+      margin-bottom: 10px; /* Jarak antara pertanyaan dan tombol */
       text-align: center;
     }
     #output {
@@ -25,8 +26,13 @@
       font-weight: bold;
     }
     .buttons {
+      position: relative;
       display: flex;
       gap: 20px; /* Jarak antar tombol */
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
     }
     button {
       padding: 10px 20px;
@@ -34,10 +40,12 @@
       cursor: pointer;
       border: none;
       border-radius: 5px;
+      position: absolute; /* Untuk memungkinkan perpindahan tombol "Tidak" */
     }
     #yes {
       background-color: green;
       color: white;
+      position: static; /* Tombol "Ya" tidak berpindah */
     }
     #no {
       background-color: red;
@@ -54,16 +62,34 @@
   </div>
 
   <script>
-    const yesButton = document.getElementById("yes");
     const noButton = document.getElementById("no");
+    const yesButton = document.getElementById("yes");
     const output = document.getElementById("output");
+    const container = document.querySelector(".buttons");
+
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+
+    // Event saat kursor mendekati tombol "Tidak"
+    noButton.addEventListener("mouseenter", () => {
+      const buttonWidth = noButton.offsetWidth;
+      const buttonHeight = noButton.offsetHeight;
+
+      // Hitung posisi acak baru dalam batas kontainer
+      const randomX = Math.random() * (containerWidth - buttonWidth);
+      const randomY = Math.random() * (containerHeight - buttonHeight);
+
+      // Terapkan posisi acak
+      noButton.style.left = `${randomX}px`;
+      noButton.style.top = `${randomY}px`;
+    });
 
     // Event saat tombol "Ya" diklik
     yesButton.addEventListener("click", () => {
       output.textContent = "Terima kasih atas feedback Anda!";
     });
 
-    // Event saat tombol "Tidak" diklik
+    // Event jika tombol "Tidak" berhasil diklik (kemungkinan kecil)
     noButton.addEventListener("click", () => {
       output.textContent = "Kami akan terus memperbaiki layanan kami. Terima kasih atas feedback Anda!";
     });
