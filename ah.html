@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plant Coaction Feedback 4</title>
+  <title>Plant Coaction Feedback 2</title>
   <style>
     body {
       display: flex;
@@ -64,7 +64,7 @@
 
     // Event saat kursor mendekati tombol "Tidak"
     noButton.addEventListener("mouseenter", () => {
-      const maxRadius = 720; // Radius maksimal pergerakan tombol dalam piksel
+      const maxRadius = 300; // Radius maksimal pergerakan tombol dalam piksel (diperbarui ke 300px)
       const buttonWidth = noButton.offsetWidth;
       const buttonHeight = noButton.offsetHeight;
 
@@ -73,9 +73,9 @@
       const yesButtonCenterX = yesButtonRect.left + yesButtonRect.width / 2;
       const yesButtonCenterY = yesButtonRect.top + yesButtonRect.height / 2;
 
-      // Membuat posisi acak dalam radius 720px di sekitar tombol "Iya"
+      // Membuat posisi acak dalam radius 300px di sekitar tombol "Iya"
       const angle = Math.random() * 2 * Math.PI; // Sudut acak
-      const distance = Math.random() * maxRadius; // Jarak acak dalam radius 720px
+      const distance = Math.random() * maxRadius; // Jarak acak dalam radius 300px
 
       // Menghitung posisi baru tombol "Tidak"
       const randomX = yesButtonCenterX + distance * Math.cos(angle) - buttonWidth / 2;
