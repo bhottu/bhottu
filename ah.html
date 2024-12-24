@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plant Coaction Feedback 3</title>
+  <title>Plant Coaction Feedback 2</title>
   <style>
     body {
       display: flex;
@@ -64,22 +64,19 @@
 
     // Event saat kursor mendekati tombol "Tidak"
     noButton.addEventListener("mouseenter", () => {
-      const screenWidth = window.innerWidth;
+      const maxWidth = 720; // Lebar maksimal pergerakan tombol dalam piksel
       const screenHeight = window.innerHeight;
       const buttonWidth = noButton.offsetWidth;
       const buttonHeight = noButton.offsetHeight;
 
-      // Hitung posisi acak baru dalam batas layar
-      const maxX = screenWidth - buttonWidth - 20; // 20 untuk margin di sisi kanan
-      const maxY = screenHeight - buttonHeight - 20; // 20 untuk margin di bawah
+      // Hitung posisi acak baru dalam batas lebar 720px dan tinggi layar
+      const randomX = Math.random() * (maxWidth - buttonWidth); // Posisi acak horizontal dalam batas 720px
+      const randomY = Math.random() * (screenHeight - buttonHeight); // Posisi acak vertikal dalam batas layar
 
-      const randomX = Math.random() * maxX; // Posisi acak horizontal dalam batas
-      const randomY = Math.random() * maxY; // Posisi acak vertikal dalam batas
-
-      // Terapkan posisi acak dengan memastikan tombol tetap berada dalam batas layar
+      // Terapkan posisi acak dengan memastikan tombol tetap berada dalam batas yang diinginkan
       noButton.style.position = "absolute"; // Berubah menjadi absolute saat berpindah
-      noButton.style.left = `${Math.min(randomX, maxX)}px`; // Pastikan tidak melampaui layar
-      noButton.style.top = `${Math.min(randomY, maxY)}px`; // Pastikan tidak melampaui layar
+      noButton.style.left = `${randomX}px`; // Posisi acak horizontal dalam 720px
+      noButton.style.top = `${randomY}px`; // Posisi acak vertikal dalam batas layar
     });
 
     // Event saat tombol "Iya" diklik
